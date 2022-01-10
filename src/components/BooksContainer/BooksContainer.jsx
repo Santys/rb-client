@@ -6,7 +6,7 @@ const BooksContainer = ({ books }) => {
       <div className="row">
         {books.map((book) => {
           return (
-            <div className="col-4">
+            <div key={book.id} className="col-4">
               <Card1 book={book} />;
             </div>
           );
