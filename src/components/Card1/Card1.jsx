@@ -2,7 +2,7 @@ import { Card } from 'react-bootstrap';
 
 const Card1 = ({ book }) => {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card>
       <Card.Img variant="top" src={book.cover} />
       <Card.Body>
         <Card.Title>{book.title}</Card.Title>
