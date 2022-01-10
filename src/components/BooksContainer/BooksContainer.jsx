@@ -1,18 +1,17 @@
+import { Col, Container, Row } from 'react-bootstrap';
 import Card1 from '../Card1/Card1';
 
 const BooksContainer = ({ books }) => {
   return (
-    <div className="container">
-      <div className="row">
-        {books.map((book) => {
-          return (
-            <div key={book.id} className="col-4">
-              <Card1 book={book} />;
-            </div>
-          );
-        })}
-      </div>
-    </div>
+    <Row>
+      {books.map((book) => {
+        return (
+          <Col xs={6} xl={2} key={book.id} className="mt-3">
+            <Card1 book={book} />
+          </Col>
+        );
+      })}
+    </Row>
   );
 };
 
