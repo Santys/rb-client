@@ -14,8 +14,8 @@ const Searchbar = () => {
             aria-describedby="basic-addon1"
             onChange={(e) => setSearchValue(e.target.value)}
           />
-          <InputGroup.Text id="basic-addon1">
-            <Link className="text-dark" to={`/search/?s=${searchValue}`}>
+          <InputGroup.Text id="basic-addon1" className="button-sand">
+            <Link className="text-dark opacity-75" to={`/search/?s=${searchValue}`}>
               <i className="bi bi-search"></i>
             </Link>
           </InputGroup.Text>
