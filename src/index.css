@@ -10,27 +10,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-.color-grey {
+.bg-grey {
   background-color: #f3f2f0;
 }
 
-.color-sand {
+.bg-sand {
   background-color: #f5eec2;
 }
 
-.color-dark-green {
-  background-color: #416a59;
+.bg-dark-green {
+  background-color: #416a59 !important;
 }
 
-.color-dark-blue {
+.bg-dark-blue {
   background-color: #39395f;
 }
 
-.color-green {
+.bg-green {
   background-color: #73a24e;
 }
 
-.color-light-green {
+.bg-light-green {
   background-color: #a9c25d;
 }
 
