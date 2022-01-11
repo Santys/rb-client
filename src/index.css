@@ -19,7 +19,7 @@ code {
 }
 
 .bg-dark-green {
-  background-color: #416a59 !important;
+  background-color: #416a59;
 }
 
 .bg-dark-blue {
@@ -56,6 +56,18 @@ code {
 
 .text-light-green {
   color: #a9c25d;
+}
+
+.button-sand {
+  background-color: #f5eec2;
+  color: rgba(33, 37, 41, 0.75);
+  border: 1px solid #ced4da;
+}
+
+.button-sand:hover {
+  background-color: #f5eec2a9;
+  color: rgba(33, 37, 41, 0.75);
+  border: 1px solid #ced4da;
 }
 
 /* 
