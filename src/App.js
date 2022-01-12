@@ -9,6 +9,7 @@ import Signup from './pages/Signup/Signup';
 import Search from './pages/Search/Search';
 import Profile from './pages/Profile/Profile';
 import Book from './pages/Book/Book';
+import Error from './pages/Error/Error';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/book/:bookId" element={<Book />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </Container>
     </div>
