@@ -8,6 +8,7 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Search from './pages/Search/Search';
 import Profile from './pages/Profile/Profile';
+import Book from './pages/Book/Book';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/search" element={<Search />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/book/:bookId" element={<Book />} />
         </Routes>
       </Container>
     </div>
