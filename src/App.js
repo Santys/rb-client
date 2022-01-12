@@ -1,6 +1,5 @@
 import './App.css';
 
-// import Searchbar from './components/Searchbar/Searchbar';
 import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/Home';
@@ -8,6 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Search from './pages/Search/Search';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/search" element={<Search />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Container>
     </div>
