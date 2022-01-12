@@ -1,8 +1,6 @@
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import './Navbar.css';
-
 const Navigationbar = () => {
   return (
     <Navbar className="bg-dark-green" variant="dark">
