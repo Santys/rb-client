@@ -11,5 +11,12 @@
 }
 
 .icon-size {
-  font-size: 30vw;
+  font-size: 10em;
+}
+
+@media (max-width: 600px) {
+  .auth-image {
+    height: 50vh !important;
+    object-fit: cover;
+  }
 }
