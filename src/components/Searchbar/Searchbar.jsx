@@ -15,7 +15,7 @@ const Searchbar = () => {
             onChange={(e) => setSearchValue(e.target.value)}
           />
           <InputGroup.Text id="basic-addon1" className="button-sand">
-            <Link className="text-dark opacity-75" to={`/search/?s=${searchValue}`}>
+            <Link className="text-dark opacity-75" to={`/search?s=${searchValue}`}>
               <i className="bi bi-search"></i>
             </Link>
           </InputGroup.Text>
