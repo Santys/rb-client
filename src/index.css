@@ -77,6 +77,33 @@ code {
   border: 1px solid #ced4da;
 }
 
+.button-sand:focus {
+  background-color: #f5eec2a9;
+  color: rgba(33, 37, 41, 0.75);
+  border: 1px solid #ced4da;
+  box-shadow: 0 0 0 0;
+}
+
+.button-link {
+  padding-top: 0;
+  background-color: transparent;
+  color: #73a24e;
+  border: 0px solid #ced4da;
+}
+
+.button-link:hover {
+  background-color: transparent;
+  color: #a9c25d;
+  border: 0px solid #ced4da;
+}
+
+.button-link:focus {
+  background-color: transparent;
+  color: #a9c25d;
+  border: 0px solid #ced4da;
+  box-shadow: 0 0 0 0;
+}
+
 /* 
 #f3f2f0
 #f5eec2 
