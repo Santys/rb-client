@@ -1,6 +1,4 @@
-import BooksContainer from '../../components/BooksContainer/BooksContainer';
 import bookExample from '../../book_example.json';
-import user from '../../user.json';
 import { Button, Col, Image, Row } from 'react-bootstrap';
 import { useState } from 'react';
 import ReviewsContainer from '../../components/ReviewsContainer/ReviewsContainer';
