@@ -7,8 +7,8 @@ const Review = ({ review }) => {
   return (
     <Card className="shadow-sm">
       <Card.Body>
-        <Card.Title>{username}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Rate: {rate}</Card.Subtitle>
+        <Card.Title className=" text-start">{username}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted text-start">Rate: {rate}</Card.Subtitle>
         <Card.Text className="text-start">
           {content.length > 140 &&
             (showFullReview ? (
