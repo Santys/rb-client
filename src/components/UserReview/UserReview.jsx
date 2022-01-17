@@ -10,8 +10,14 @@ const UserReview = ({ userReview }) => {
             <p className="m-0">My activity</p>
           </Col>
           <Col xs={6} xl={2} className="text-end">
-            <Button className="button-link">Modify</Button>
-            <Button className="button-link">Delete</Button>
+            <Button className="button-link">
+              <i className="bi bi-pencil"></i>
+              <span className="element-to-hide"> Modify</span>
+            </Button>
+            <Button className="button-link">
+              <i className="bi bi-trash"></i>
+              <span className="element-to-hide"> Delete</span>
+            </Button>
           </Col>
         </Row>
         <hr className="mt-0" />
