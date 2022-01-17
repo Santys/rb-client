@@ -1,74 +1,95 @@
-import bookExample from '../../book_example.json';
-import { Button, Col, Image, Row } from 'react-bootstrap';
-import { useState } from 'react';
+import { Button, Col, Image, Row, Spinner } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
 import ReviewsContainer from '../../components/ReviewsContainer/ReviewsContainer';
 import UserReview from '../../components/UserReview/UserReview';
+import { getBookById } from '../services/books';
+import { useParams } from 'react-router-dom';
 
 const Book = () => {
+  const [book, setBook] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
   const [showFullDescription, setShowFullDescription] = useState(false);
+  const { bookId } = useParams();
+
+  useEffect(() => {
+    getBookById(bookId)
+      .then((response) => {
+        setBook(response.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setBook({});
+        setIsLoading(false);
+      });
+  }, [bookId]);
 
   return (
     <div className="mt-3 p-3 p-xl-5 shadow">
-      <Row className="text-xl-start">
-        <Col xs={12} xl={2}>
-          <Col>
-            <Image className="shadow-lg" fluid={true} rounded={true} src={bookExample.cover}></Image>
-          </Col>
-        </Col>
-        <Col xs={12} xl={10} className="mt-4 mt-xl-0">
-          <Col>
-            <p className="h5">{bookExample.title}</p>
-          </Col>
-          <Col>
-            <p className="fw-bold text-secondary">{bookExample.author}</p>
-          </Col>
-          <Col>
-            <Row>
-              <Col xs={6} xl={1}>
-                <p className="fw-bold text-dark-green">
-                  <i className="bi bi-pencil"></i>{' '}
-                  {bookExample.otherUsersReviews.length + (bookExample.userReview && 1)}
-                </p>
+      {isLoading ? (
+        <Spinner animation="border" />
+      ) : (
+        <>
+          <Row className="text-xl-start">
+            <Col xs={12} xl={2}>
+              <Col>
+                <Image className="shadow-lg" fluid={true} rounded={true} src={book.cover}></Image>
               </Col>
-              <Col xs={6} xl={11}>
-                <p className="fw-bold text-dark-green">
-                  <i className="bi bi-trophy"></i> {bookExample.rate}
-                </p>
+            </Col>
+            <Col xs={12} xl={10} className="mt-4 mt-xl-0">
+              <Col>
+                <p className="h5">{book.title}</p>
               </Col>
-            </Row>
-          </Col>
-          <Col className="text-start">
-            {bookExample.description.length > 150 &&
-              (showFullDescription ? (
-                <>
-                  <span>{bookExample.description} </span>
-                  <Button className="button-link" onClick={() => setShowFullDescription(!showFullDescription)}>
-                    <i className="bi bi-chevron-up"></i> View less
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                    {bookExample.description.substring(0, 150)}
-                    {'...'}
-                  </span>
-                  <Button className="button-link" onClick={() => setShowFullDescription(!showFullDescription)}>
-                    <i className="bi bi-chevron-down"></i> View more
-                  </Button>
-                </>
-              ))}
-            {bookExample.description.length < 150 && <span>{bookExample.description} </span>}
-          </Col>
-        </Col>
-        <Col xs={12} className="mt-3">
-          <UserReview userReview={bookExample.userReview} />
-        </Col>
-        <Col xs={12} className="mt-3">
-          <p className="text-start mb-1">Community reviews</p>
-          <hr className="mt-0" />
-          <ReviewsContainer reviews={bookExample.otherUsersReviews} />
-        </Col>
-      </Row>
+              <Col>
+                <p className="fw-bold text-secondary">{book.author}</p>
+              </Col>
+              <Col>
+                <Row>
+                  <Col xs={6} xl={1}>
+                    <p className="fw-bold text-dark-green">
+                      <i className="bi bi-pencil"></i> {book.otherUsersReviews.length + (book.userReview && 1)}
+                    </p>
+                  </Col>
+                  <Col xs={6} xl={11}>
+                    <p className="fw-bold text-dark-green">
+                      <i className="bi bi-trophy"></i> {book.rate}
+                    </p>
+                  </Col>
+                </Row>
+              </Col>
+              <Col className="text-start">
+                {book.description.length > 150 &&
+                  (showFullDescription ? (
+                    <>
+                      <span>{book.description} </span>
+                      <Button className="button-link" onClick={() => setShowFullDescription(!showFullDescription)}>
+                        <i className="bi bi-chevron-up"></i> View less
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {book.description.substring(0, 150)}
+                        {'...'}
+                      </span>
+                      <Button className="button-link" onClick={() => setShowFullDescription(!showFullDescription)}>
+                        <i className="bi bi-chevron-down"></i> View more
+                      </Button>
+                    </>
+                  ))}
+                {book.description.length < 150 && <span>{book.description} </span>}
+              </Col>
+            </Col>
+            <Col xs={12} className="mt-3">
+              <UserReview userReview={book.userReview} />
+            </Col>
+            <Col xs={12} className="mt-3">
+              <p className="text-start mb-1">Community reviews</p>
+              <hr className="mt-0" />
+              <ReviewsContainer reviews={book.otherUsersReviews} />
+            </Col>
+          </Row>
+        </>
+      )}
     </div>
   );
 };
