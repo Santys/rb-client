@@ -2,8 +2,8 @@ import { Button, Col, Image, Row, Spinner } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import ReviewsContainer from '../../components/ReviewsContainer/ReviewsContainer';
 import UserReview from '../../components/UserReview/UserReview';
-import { getBookById } from '../services/books';
 import { useParams } from 'react-router-dom';
+import { getBookById } from '../../services/books';
 
 const Book = () => {
   const [book, setBook] = useState({});

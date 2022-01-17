@@ -1,8 +1,8 @@
 import BooksContainer from '../../components/BooksContainer/BooksContainer';
 import Searchbar from '../../components/Searchbar/Searchbar';
-import { getTopBooks } from '../services/books';
 import { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
+import { getTopBooks } from '../../services/books';
 
 const Home = () => {
   const [topBooks, setTopBooks] = useState([]);

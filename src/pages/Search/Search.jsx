@@ -2,8 +2,8 @@ import BooksContainer from '../../components/BooksContainer/BooksContainer';
 import Searchbar from '../../components/Searchbar/Searchbar';
 import { useSearchParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getBooksSearched } from '../services/books';
 import { Spinner } from 'react-bootstrap';
+import { getBooksSearched } from '../../services/books';
 
 const Search = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
