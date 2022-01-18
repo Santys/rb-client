@@ -4,6 +4,8 @@ import ReviewsContainer from '../../components/ReviewsContainer/ReviewsContainer
 import UserReview from '../../components/UserReview/UserReview';
 import { useParams } from 'react-router-dom';
 import { getBookById } from '../../services/books';
+import { createNewReview, deleteReview, modifyReview } from '../../services/review';
+import user from '../../user.json';
 
 const Book = () => {
   const [book, setBook] = useState({});
@@ -11,6 +13,7 @@ const Book = () => {
   const [showFullDescription, setShowFullDescription] = useState(false);
   const { bookId } = useParams();
 
+  const user = 'Sand';
   useEffect(() => {
     getBookById(bookId)
       .then((response) => {
@@ -22,6 +25,68 @@ const Book = () => {
         setIsLoading(false);
       });
   }, [bookId]);
+
+  // Manage user reviews
+  const createNewUserReview = (content, rate) => {
+    setIsLoading(true);
+    createNewReview(content, rate, user)
+      .then((response) => {
+        getBookById(bookId)
+          .then((response) => {
+            setBook(response.data);
+            setIsLoading(false);
+          })
+          .catch((err) => {
+            setBook({});
+            setIsLoading(false);
+          });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        console.log('Error while creating a new review: ' + err);
+      });
+  };
+
+  const updateUserReview = (content, rate, reviewId) => {
+    setIsLoading(true);
+    modifyReview(content, rate, reviewId)
+      .then((response) => {
+        getBookById(bookId)
+          .then((response) => {
+            setBook(response.data);
+            setIsLoading(false);
+          })
+          .catch((err) => {
+            setBook({});
+            setIsLoading(false);
+          });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        console.log('Error while modifying review: ' + err);
+      });
+  };
+
+  const deleteUserReview = (reviewId) => {
+    console.log(reviewId);
+    setIsLoading(true);
+    deleteReview(reviewId)
+      .then((response) => {
+        getBookById(bookId)
+          .then((response) => {
+            setBook(response.data);
+            setIsLoading(false);
+          })
+          .catch((err) => {
+            setBook({});
+            setIsLoading(false);
+          });
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        console.log('Error while deleting review: ' + err);
+      });
+  };
 
   return (
     <div className="mt-3 p-3 p-xl-5 shadow">
@@ -80,7 +145,12 @@ const Book = () => {
               </Col>
             </Col>
             <Col xs={12} className="mt-3">
-              <UserReview userReview={book.userReview} />
+              <UserReview
+                userReview={book.userReview}
+                createNewUserReview={createNewUserReview}
+                updateUserReview={updateUserReview}
+                deleteUserReview={deleteUserReview}
+              />
             </Col>
             <Col xs={12} className="mt-3">
               <p className="text-start mb-1">Community reviews</p>
