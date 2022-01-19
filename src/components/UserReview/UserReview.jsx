@@ -35,10 +35,10 @@ const UserReview = ({ userReview, createNewUserReview, updateUserReview, deleteU
         <>
           <Col xs={12}>
             <Row>
-              <Col xs={6} xl={10} className="text-start">
+              <Col xs={6} xl={9} className="text-start">
                 <p className="m-0">My activity</p>
               </Col>
-              <Col xs={6} xl={2} className="text-end">
+              <Col xs={6} xl={3} className="text-end">
                 <Button className="button-link" onClick={(e) => handleModify(e)}>
                   <i className="bi bi-pencil"></i>
                   <span className="element-to-hide"> Modify</span>
