@@ -5,7 +5,6 @@ import UserReview from '../../components/UserReview/UserReview';
 import { useParams } from 'react-router-dom';
 import { getBookById } from '../../services/books';
 import { createNewReview, deleteReview, modifyReview } from '../../services/review';
-import user from '../../user.json';
 
 const Book = () => {
   const [book, setBook] = useState({});

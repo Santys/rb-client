@@ -9,19 +9,43 @@
         {
             "id": "abcdc",
             "username": "Captain West",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada, urna nec pellentesque fermentum, sem nibh gravida tellus, nec sagittis nisl leo et enim. Aenean ac efficitur sapien. In tempus scelerisque sem. Nunc elementum dolor at velit semper, quis iaculis neque faucibus.",
+            "content": "0 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada, urna nec pellentesque fermentum, sem nibh gravida tellus, nec sagittis nisl leo et enim. Aenean ac efficitur sapien. In tempus scelerisque sem. Nunc elementum dolor at velit semper, quis iaculis neque faucibus.",
             "rate": 9.8 
         },
         {
             "id": "abcde",
             "username": "Jezal dan Luthar",
-            "content": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem itaque eligendi aspernatur quia aut minima corrupti odit nam? Laboriosam provident ullam error ad. Obcaecati, quis porro itaque iure velit ipsum?",
+            "content": "1 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem itaque eligendi aspernatur quia aut minima corrupti odit nam? Laboriosam provident ullam error ad. Obcaecati, quis porro itaque iure velit ipsum?",
             "rate": 10 
         },
         {
             "id": "abcdf",
             "username": "Bayaz",
-            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada, urna nec pellentesque fermentum, sem nibh gravida tellus, nec sagittis nisl leo et enim. Aenean ac efficitur sapien.",
+            "content": "2 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada, urna nec pellentesque fermentum, sem nibh gravida tellus, nec sagittis nisl leo et enim. Aenean ac efficitur sapien.",
+            "rate": 9.6 
+        },
+        {
+            "id": "abcdg",
+            "username": "Captain West",
+            "content": "3 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada, urna nec pellentesque fermentum, sem nibh gravida tellus, nec sagittis nisl leo et enim. Aenean ac efficitur sapien. In tempus scelerisque sem. Nunc elementum dolor at velit semper, quis iaculis neque faucibus.",
+            "rate": 9.8 
+        },
+        {
+            "id": "abcdh",
+            "username": "Jezal dan Luthar",
+            "content": "4 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem itaque eligendi aspernatur quia aut minima corrupti odit nam? Laboriosam provident ullam error ad. Obcaecati, quis porro itaque iure velit ipsum?",
+            "rate": 10 
+        },
+        {
+            "id": "abcdi",
+            "username": "Bayaz",
+            "content": "5 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada, urna nec pellentesque fermentum, sem nibh gravida tellus, nec sagittis nisl leo et enim. Aenean ac efficitur sapien.",
+            "rate": 9.6 
+        },
+        {
+            "id": "abcdj",
+            "username": "Bayaz",
+            "content": "6 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada, urna nec pellentesque fermentum, sem nibh gravida tellus, nec sagittis nisl leo et enim. Aenean ac efficitur sapien.",
             "rate": 9.6 
         }
     ],
