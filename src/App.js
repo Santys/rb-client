@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App bg-grey">
       <Navbar />
-      <Container className="bg-grey">
+      <Container className="bg-grey mb-3">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
