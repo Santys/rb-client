@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/auth.context';
 
 const Navigationbar = () => {
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+
   return (
     <Navbar className="bg-dark-green" variant="dark">
       <Container>
@@ -10,14 +14,18 @@ const Navigationbar = () => {
           <span className="fs-3"> MyBookApp</span>
         </Navbar.Brand>
         <Nav className="justify-content-end">
-          <Nav.Link as={Link} to="/profile">
-            <i className="bi bi-person fs-3 align-middle"></i>
-            <span className="element-to-hide fs-5 align-middle"> Profile</span>
-          </Nav.Link>
-          <Nav.Link as={Link} to="">
-            <i className="bi bi-box-arrow-right fs-3 align-middle"></i>
-            <span className="element-to-hide fs-5 align-middle"> Logout</span>
-          </Nav.Link>
+          {isLoggedIn && (
+            <>
+              <Nav.Link as={Link} to={`/profile/${user._id}`}>
+                <i className="bi bi-person fs-3 align-middle"></i>
+                <span className="element-to-hide fs-5 align-middle"> Profile</span>
+              </Nav.Link>
+              <Nav.Link as="span" onClick={logOutUser}>
+                <i className="bi bi-box-arrow-right fs-3 align-middle"></i>
+                <span className="element-to-hide fs-5 align-middle"> Logout</span>
+              </Nav.Link>
+            </>
+          )}
         </Nav>
       </Container>
     </Navbar>

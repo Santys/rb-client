@@ -1,9 +1,21 @@
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthImage from '../../components/AuthImage/AuthImage';
 import AuthForm from '../../components/Form/Form';
+import { signup } from '../../services/auth';
 
 const Signup = () => {
+  const navigate = useNavigate();
+
+  const signupUser = (username, password) => {
+    signup(username, password)
+      .then((response) => {
+        navigate('/login');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
       <Row>
@@ -19,7 +31,7 @@ const Signup = () => {
                     <i className="bi bi-book"></i> MyBookApp
                   </p>
                   <div className="mt-xl-3">
-                    <AuthForm action={'Sign up'} />
+                    <AuthForm action={'Sign up'} handleAuth={signupUser} />
                   </div>
                 </Col>
                 <Col xs={12} xl={8} className="mt-3">

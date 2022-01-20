@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-const AuthForm = ({ action, handleSubmit }) => {
+const AuthForm = ({ action, handleAuth }) => {
   const [authForm, setAuthForm] = useState({
     username: '',
     password: '',
@@ -12,6 +12,11 @@ const AuthForm = ({ action, handleSubmit }) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setAuthForm({ ...authForm, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleAuth(username, password);
   };
 
   return (

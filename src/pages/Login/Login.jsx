@@ -1,11 +1,29 @@
+import { useContext } from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthImage from '../../components/AuthImage/AuthImage';
 import AuthForm from '../../components/Form/Form';
+import { AuthContext } from '../../context/auth.context';
+import { login } from '../../services/auth';
 
 import './Login.css';
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const { logInUser } = useContext(AuthContext);
+
+  const loginUser = (username, password) => {
+    login(username, password)
+      .then((response) => {
+        logInUser(response.data.authToken);
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <Row>
@@ -21,7 +39,7 @@ const Login = () => {
                     <i className="bi bi-book"></i> MyBookApp
                   </p>
                   <div className="mt-xl-3">
-                    <AuthForm action={'Log in'} />
+                    <AuthForm action={'Log in'} handleAuth={loginUser} />
                   </div>
                 </Col>
                 <Col xs={12} xl={8} className="mt-3">
