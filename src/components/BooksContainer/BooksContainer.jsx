@@ -6,7 +6,7 @@ const BooksContainer = ({ books }) => {
     <Row>
       {books.map((book) => {
         return (
-          <Col xs={6} xl={2} key={book.id} className="mt-3">
+          <Col xs={6} xl={2} key={book._id} className="mt-3">
             <Card1 book={book} />
           </Col>
         );

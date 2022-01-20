@@ -1,17 +1,19 @@
 import BooksContainer from '../../components/BooksContainer/BooksContainer';
-import user from '../../user.json';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getUserBooks } from '../../services/user';
 import { Spinner } from 'react-bootstrap';
+import { AuthContext } from '../../context/auth.context';
 
 const Profile = () => {
   const [userBooks, setUserBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const { user } = useContext(AuthContext);
+
   useEffect(() => {
-    getUserBooks()
+    getUserBooks(user._id)
       .then((response) => {
-        setUserBooks(response.data);
+        setUserBooks(response.data.books);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -28,7 +30,7 @@ const Profile = () => {
         <>
           <p className="h3 text-dark-green">{`${user.username}'s recent updates`}</p>
           <hr />
-          <BooksContainer books={user.booksReviewed || userBooks} />
+          <BooksContainer books={userBooks} />
         </>
       )}
     </div>
