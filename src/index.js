@@ -6,11 +6,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
+import { AuthProviderWrapper } from './context/auth.context';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProviderWrapper>
+        <App />
+      </AuthProviderWrapper>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
