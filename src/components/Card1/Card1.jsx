@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Card1 = ({ book }) => {
   return (
-    <Link className="text-decoration-none text-dark" to={`/book/${book._id}`}>
+    <Link className="text-decoration-none text-dark" to={`/book/${book.idApi}`}>
       <Card className="h-100">
         <Card.Img variant="top" src={book.cover} />
         <Card.Body>

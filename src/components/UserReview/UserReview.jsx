@@ -31,7 +31,7 @@ const UserReview = ({ userReview, createNewUserReview, updateUserReview, deleteU
 
   return (
     <Row className="justify-content-center">
-      {userReview ? (
+      {userReview.content ? (
         <>
           <Col xs={12}>
             <Row>

@@ -1,10 +1,11 @@
 import { Button, Col, Image, Row, Spinner } from 'react-bootstrap';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ReviewsContainer from '../../components/ReviewsContainer/ReviewsContainer';
 import UserReview from '../../components/UserReview/UserReview';
 import { useParams } from 'react-router-dom';
 import { getBookById } from '../../services/books';
 import { createNewReview, deleteReview, modifyReview } from '../../services/review';
+import { AuthContext } from '../../context/auth.context';
 
 const Book = () => {
   const [book, setBook] = useState({});
@@ -12,9 +13,10 @@ const Book = () => {
   const [showFullDescription, setShowFullDescription] = useState(false);
   const { bookId } = useParams();
 
-  const user = 'Sand';
+  const { user } = useContext(AuthContext);
+
   useEffect(() => {
-    getBookById(bookId)
+    getBookById(bookId, user._id)
       .then((response) => {
         setBook(response.data);
         setIsLoading(false);
@@ -95,53 +97,65 @@ const Book = () => {
         <>
           <Row className="text-xl-start">
             <Col xs={12} xl={2}>
-              <Col>
-                <Image className="shadow-lg" fluid={true} rounded={true} src={book.cover}></Image>
-              </Col>
+              {book.cover && (
+                <Col>
+                  <Image className="shadow-lg" fluid={true} rounded={true} src={book.cover}></Image>
+                </Col>
+              )}
             </Col>
             <Col xs={12} xl={10} className="mt-4 mt-xl-0">
-              <Col>
-                <p className="h5">{book.title}</p>
-              </Col>
-              <Col>
-                <p className="fw-bold text-secondary">{book.author}</p>
-              </Col>
+              {book.title && (
+                <Col>
+                  <p className="h5">{book.title}</p>
+                </Col>
+              )}
+              {book.author && (
+                <Col>
+                  <p className="fw-bold text-secondary">{book.author}</p>
+                </Col>
+              )}
               <Col>
                 <Row>
-                  <Col xs={6} xl={1}>
-                    <p className="fw-bold text-dark-green">
-                      <i className="bi bi-pencil"></i> {book.otherUsersReviews.length + (book.userReview && 1)}
-                    </p>
-                  </Col>
-                  <Col xs={6} xl={11}>
-                    <p className="fw-bold text-dark-green">
-                      <i className="bi bi-trophy"></i> {book.rate}
-                    </p>
-                  </Col>
+                  {book.otherUsersReview && (
+                    <Col xs={6} xl={1}>
+                      <p className="fw-bold text-dark-green">
+                        <i className="bi bi-pencil"></i> {book.otherUsersReview.length + (book.userReview.content && 1)}
+                      </p>
+                    </Col>
+                  )}
+                  {book.rate && (
+                    <Col xs={6} xl={11}>
+                      <p className="fw-bold text-dark-green">
+                        <i className="bi bi-trophy"></i> {book.rate}
+                      </p>
+                    </Col>
+                  )}
                 </Row>
               </Col>
-              <Col className="text-start">
-                {book.description.length > 150 &&
-                  (showFullDescription ? (
-                    <>
-                      <span>{book.description} </span>
-                      <Button className="button-link" onClick={() => setShowFullDescription(!showFullDescription)}>
-                        <i className="bi bi-chevron-up"></i> View less
-                      </Button>
-                    </>
-                  ) : (
-                    <>
-                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                        {book.description.substring(0, 150)}
-                        {'...'}
-                      </span>
-                      <Button className="button-link" onClick={() => setShowFullDescription(!showFullDescription)}>
-                        <i className="bi bi-chevron-down"></i> View more
-                      </Button>
-                    </>
-                  ))}
-                {book.description.length < 150 && <span>{book.description} </span>}
-              </Col>
+              {book.description && (
+                <Col className="text-start">
+                  {book.description.length > 150 &&
+                    (showFullDescription ? (
+                      <>
+                        <span>{book.description} </span>
+                        <Button className="button-link" onClick={() => setShowFullDescription(!showFullDescription)}>
+                          <i className="bi bi-chevron-up"></i> View less
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          {book.description.substring(0, 150)}
+                          {'...'}
+                        </span>
+                        <Button className="button-link" onClick={() => setShowFullDescription(!showFullDescription)}>
+                          <i className="bi bi-chevron-down"></i> View more
+                        </Button>
+                      </>
+                    ))}
+                  {book.description.length < 150 && <span>{book.description} </span>}
+                </Col>
+              )}
             </Col>
             <Col xs={12} className="mt-3">
               <UserReview
@@ -151,11 +165,13 @@ const Book = () => {
                 deleteUserReview={deleteUserReview}
               />
             </Col>
-            <Col xs={12} className="mt-3">
-              <p className="text-start mb-1">Community reviews</p>
-              <hr className="mt-0" />
-              <ReviewsContainer reviews={book.otherUsersReviews} />
-            </Col>
+            {book.otherUsersReview && (
+              <Col xs={12} className="mt-3">
+                <p className="text-start mb-1">Community reviews</p>
+                <hr className="mt-0" />
+                <ReviewsContainer reviews={book.otherUsersReview} />
+              </Col>
+            )}
           </Row>
         </>
       )}

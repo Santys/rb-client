@@ -31,7 +31,7 @@ const BooksCarousel = ({ books }) => {
                   <Row className="justify-content-center">
                     {bookList.map((book) => {
                       return (
-                        <Col key={book.id} xs={6} xl={2}>
+                        <Col key={book._id} xs={6} xl={2}>
                           <Card1 book={book} />
                         </Col>
                       );
