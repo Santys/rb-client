@@ -108,24 +108,28 @@ const Book = () => {
                   <p className="h5">{book.title}</p>
                 </Col>
               )}
-              {book.author && (
-                <Col>
-                  <p className="fw-bold text-secondary">{book.author}</p>
-                </Col>
-              )}
+              {book.authors &&
+                book.authors.map((author) => {
+                  return (
+                    <Col key={author}>
+                      <p className="fw-bold text-secondary">{author}</p>
+                    </Col>
+                  );
+                })}
               <Col>
                 <Row>
-                  {book.otherUsersReview && (
+                  {(book.userReview.content || book.otherUsersReview.length.length !== 0) && (
                     <Col xs={6} xl={1}>
                       <p className="fw-bold text-dark-green">
-                        <i className="bi bi-pencil"></i> {book.otherUsersReview.length + (book.userReview.content && 1)}
+                        <i className="bi bi-pencil"></i>{' '}
+                        {book.otherUsersReview.length + (book.userReview.content ? 1 : 0)}
                       </p>
                     </Col>
                   )}
-                  {book.rate && (
+                  {book.rating && (
                     <Col xs={6} xl={11}>
                       <p className="fw-bold text-dark-green">
-                        <i className="bi bi-trophy"></i> {book.rate}
+                        <i className="bi bi-trophy"></i> {Math.round(book.rating * 100) / 100}
                       </p>
                     </Col>
                   )}
