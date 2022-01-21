@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 
 const Review = ({ review }) => {
-  const { username, content, rate } = review;
+  const { owner, content, rate } = review;
   const [showFullReview, setShowFullReview] = useState(false);
   return (
     <Card className="shadow-sm">
       <Card.Body>
-        <Card.Title className=" text-start">{username}</Card.Title>
+        <Card.Title className=" text-start">{owner}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted text-start">Rate: {rate}</Card.Subtitle>
         {content && (
           <Card.Text className="text-start">

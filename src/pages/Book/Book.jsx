@@ -25,14 +25,14 @@ const Book = () => {
         setBook({});
         setIsLoading(false);
       });
-  }, [bookId]);
+  }, [bookId, user._id]);
 
   // Manage user reviews
   const createNewUserReview = (content, rate) => {
     setIsLoading(true);
-    createNewReview(content, rate, user)
+    createNewReview(content, rate, user, bookId)
       .then((response) => {
-        getBookById(bookId)
+        getBookById(bookId, user._id)
           .then((response) => {
             setBook(response.data);
             setIsLoading(false);
@@ -50,9 +50,9 @@ const Book = () => {
 
   const updateUserReview = (content, rate, reviewId) => {
     setIsLoading(true);
-    modifyReview(content, rate, reviewId)
+    modifyReview(content, rate, reviewId, user._id)
       .then((response) => {
-        getBookById(bookId)
+        getBookById(bookId, user._id)
           .then((response) => {
             setBook(response.data);
             setIsLoading(false);
@@ -69,11 +69,10 @@ const Book = () => {
   };
 
   const deleteUserReview = (reviewId) => {
-    console.log(reviewId);
     setIsLoading(true);
-    deleteReview(reviewId)
+    deleteReview(reviewId, user._id)
       .then((response) => {
-        getBookById(bookId)
+        getBookById(bookId, user._id)
           .then((response) => {
             setBook(response.data);
             setIsLoading(false);

@@ -30,7 +30,7 @@ const ReviewsContainer = ({ reviews }) => {
     <Row>
       {currentReviews.map((review) => {
         return (
-          <Col key={review.id} xs={12} className="mt-1">
+          <Col key={review._id} xs={12} className="mt-1">
             <Review review={review} />
           </Col>
         );
