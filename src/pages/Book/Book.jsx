@@ -1,5 +1,6 @@
 import { Button, Col, Image, Row, Spinner } from 'react-bootstrap';
 import { useContext, useEffect, useState } from 'react';
+import parse from 'html-react-parser';
 import ReviewsContainer from '../../components/ReviewsContainer/ReviewsContainer';
 import UserReview from '../../components/UserReview/UserReview';
 import { useParams } from 'react-router-dom';
@@ -140,7 +141,7 @@ const Book = () => {
                   {book.description.length > 150 &&
                     (showFullDescription ? (
                       <>
-                        <span>{book.description} </span>
+                        <span>{parse(book.description)} </span>
                         <Button className="button-link" onClick={() => setShowFullDescription(!showFullDescription)}>
                           <i className="bi bi-chevron-up"></i> View less
                         </Button>
@@ -148,7 +149,7 @@ const Book = () => {
                     ) : (
                       <>
                         <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                          {book.description.substring(0, 150)}
+                          {parse(book.description.substring(0, 150))}
                           {'...'}
                         </span>
                         <Button className="button-link" onClick={() => setShowFullDescription(!showFullDescription)}>
@@ -156,7 +157,7 @@ const Book = () => {
                         </Button>
                       </>
                     ))}
-                  {book.description.length < 150 && <span>{book.description} </span>}
+                  {book.description.length < 150 && <span>{parse(book.description)} </span>}
                 </Col>
               )}
             </Col>
