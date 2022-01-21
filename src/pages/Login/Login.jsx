@@ -50,7 +50,14 @@ const Login = () => {
                 </Col>
                 <Col xs={12} xl={8} className="mt-3">
                   <div className="d-grid gap-2">
-                    <Button className="button-sand">Try demo</Button>
+                    <Button
+                      className="button-sand"
+                      onClick={() => {
+                        loginUser('emperorpenguin', '1234');
+                      }}
+                    >
+                      Try demo
+                    </Button>
                   </div>
                 </Col>
                 <Col xs={12} xl={8} className="mt-3">
