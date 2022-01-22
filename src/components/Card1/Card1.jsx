@@ -5,7 +5,7 @@ const Card1 = ({ book }) => {
   return (
     <Link className="text-decoration-none text-dark" to={`/book/${book.idApi}`}>
       <Card className="h-100">
-        <Card.Img variant="top" src={book.cover} />
+        <Card.Img className="h-100" variant="top" src={book.cover} />
         <Card.Body>
           <Card.Title className="text-truncate">{book.title}</Card.Title>
           <Card.Text className="text-truncate">{book.author}</Card.Text>
