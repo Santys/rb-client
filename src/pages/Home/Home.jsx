@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Col, Row, Spinner } from 'react-bootstrap';
 import { getTopBooks } from '../../services/books';
 import BooksCarousel from '../../components/BooksCarousel/BooksCarousel';
+import Quote from '../../components/Quote/Quote';
 
 const Home = () => {
   const [topBooks, setTopBooks] = useState([]);
@@ -37,6 +38,9 @@ const Home = () => {
             <BooksCarousel books={topBooks} />
           </>
         )}
+      </Col>
+      <Col xs={12} className="mt-5">
+        <Quote />
       </Col>
     </Row>
   );
